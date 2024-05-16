@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
-
+const cors = require('cors')
 const mongoose = require('mongoose');
 const passport = require('./passport/passport');
 
@@ -12,7 +12,7 @@ require('dotenv').config()
 const app = express();
 const router = require('./router/router.app')
 
-
+app.use(cors())
 app.use(session({
     secret: 'thangkhungtheki',
     resave: false,
