@@ -7,15 +7,47 @@ const LocalStrategy = require("passport-local").Strategy;
 // passport session setup
 // used to serialize the user for the session
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user.username);
 });
 // used to deserialize the user
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
-// local sign-up
+passport.deserializeUser(async function (id, done) {
+  await User.findById(id)
+  .then((user) => {
+    done(user)
+  })
+  .catch(e => {
+    done(null, e)
+  })
+})
+
+passport.use('local.signin',new LocalStrategy({
+    usernameField:'username',
+    passwordField:'password',
+    passReqToCallback:true
+ }, async function(req, username, password, done) {
+   
+    await User.findOne({ 'username': username },  )
+    .then((user)=>{
+     
+        //console.log(user)
+       
+        if (!user) {
+          return done(null, false, { message : 'Not user found'})
+        }
+        if(!user.validPassword(password, user.password)){
+       
+            return done(null,false,{message:'Wrong password'})
+        }
+         return done(null, user)
+     
+    })
+    .catch((e)=>{
+      return done(e)
+    })
+    }
+  ))
+
+  // local sign-up
 passport.use(
   "local.signup",
   new LocalStrategy(
@@ -47,33 +79,11 @@ passport.use(
           if (err) {
             return done(err);
           }
-          return done(null, newUser);
+          return done(null, newUser)
         });
       });
     }
   )
-);
-
-passport.use('local.signin',new LocalStrategy({
-    usernameField:'username',
-    passwordField:'password',
-    passReqToCallback:true
- },function(req, username, password,done) {
-   
-  User.findOne({ 'username': username }, function(err, user) {
-        //console.log(user)
-        if (err) { return done(err); }
-        if (!user) {
-          return done(null, false, { message : 'Not user found'})
-        }
-        if(!user.validPassword(password, user.password)){
-       
-            return done(null,false,{message:'Wrong password'})
-        }
-         return done(null, user);
-     
-      }).clone;
-    }
-  ));
+)
 
 module.exports = passport
