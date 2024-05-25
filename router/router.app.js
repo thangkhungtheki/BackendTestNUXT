@@ -6,8 +6,10 @@ const jwt = require('jsonwebtoken')
 const secret = "taolathangkhungtheki"
 
 router.get('/', (req, res)=> {
+    setTimeout(()=>{
+        return res.status(200).send('hello guy')
+    },10000)
     
-    return res.status(200).send('hello guy')
 })
 
 router.post('/jwt', passport.authenticate('local.signin'), login)
