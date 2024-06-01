@@ -8,7 +8,7 @@ const secret = "taolathangkhungtheki"
 router.get('/', (req, res)=> {
     setTimeout(()=>{
         return res.status(200).send('hello guy')
-    },10000)
+    },1000)
     
 })
 
