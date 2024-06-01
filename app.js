@@ -28,11 +28,6 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 
-
-
-
-
-
 mongoose.connect(process.env.DATABASE_URL);
 app.use('/', router)
 

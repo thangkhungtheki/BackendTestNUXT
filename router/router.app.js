@@ -5,6 +5,8 @@ const passport = require ("../passport/passport")
 const jwt = require('jsonwebtoken')
 const secret = "taolathangkhungtheki"
 
+const xulyaxios = require('../xulyaxios')
+
 router.get('/', (req, res)=> {
     setTimeout(()=>{
         return res.status(200).send('hello guy')
@@ -25,7 +27,7 @@ function login(req, res) {
     const token = jwt.sign({ username: userId }, secret,{expiresIn: expiresInMinute})
 
     // Trả về cho client
-    res.send({
+    res.json({
         user: req.user,
         token
     });
@@ -52,5 +54,45 @@ function authenticateToken(req, res, next) {
         next(); // Tiếp tục tiến trình xử lý request
     });
 }
+
+router.get('/g',  async (req, res) => { // Queue parrams: 127.0.0.1:3000/g?idunique=...&idfilm=... 
+
+    //  setTimeout(async() => {
+        let idunique = req.query.idunique
+        let idfilm = req.query.idfilm
+    // console.log(idunique)
+    // console.log(idfilm)
+        let _html = await xulyaxios.xuly_file_m3u8(idunique, idfilm)
+        let _linkm3u8 = await xulyaxios.xuly_file_m3u82(_html, idfilm)
+        let _data_m3u8 = await xulyaxios.doc_xuly_m3u8_new(_linkm3u8)
+    
+    //console.log(_data_m3u8)
+        res.set('Content-Disposition', 'attachment; filename="file.m3u8"');
+        res.setHeader('Content-Type', 'application/vnd.apple.mpegurl');
+    // res.sendFile(__dirname + '\\png\\auto.m3u8') // return text ?
+        res.send(_data_m3u8)
+    //   }, 8000);
+
+    // let idunique = req.query.idunique
+    // let idfilm = req.query.idfilm
+    // // console.log(idunique)
+    // // console.log(idfilm)
+    // let _html = await xulyaxios.xuly_file_m3u8(idunique, idfilm)
+    // let _linkm3u8 = await xulyaxios.xuly_file_m3u82(_html, idfilm)
+    // let _data_m3u8 = await xulyaxios.doc_xuly_m3u8_new(_linkm3u8)
+    
+    // //console.log(_data_m3u8)
+    // res.set('Content-Disposition', 'attachment; filename="file.m3u8"');
+    // res.setHeader('Content-Type', 'application/vnd.apple.mpegurl');
+    // // res.sendFile(__dirname + '\\png\\auto.m3u8') // return text ?
+    // res.send(_data_m3u8)
+})
+
+router.get('/f', async (req, res) =>{
+    const _link = req.query.url
+    //console.log(_link)
+    let rurl = await xulyaxios.getLinklh3(_link)
+    res.redirect(rurl)
+})
 
 module.exports = router
