@@ -12,6 +12,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "replaceall": "^0.1.6"
+    "replaceall": "^0.1.6",
+    "socket.io": "^4.7.5"
   }
 }
