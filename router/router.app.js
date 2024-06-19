@@ -12,7 +12,7 @@ const xulyaxios = require('../xulyaxios')
 router.get('/', (req, res)=> {
     setTimeout(()=>{
         return res.status(200).send('hello guy')
-    },1000)
+    },100)
     
 })
 
@@ -29,7 +29,7 @@ function login(req, res) {
     const token = jwt.sign({ username: userId }, secret,{expiresIn: expiresInMinute})
 
     // Trả về cho client
-    res.json({
+    return res.json({
         user: req.user,
         token
     });
