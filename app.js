@@ -5,7 +5,7 @@ const session = require('express-session')
 const cors = require('cors')
 const mongoose = require('mongoose');
 const passport = require('./passport/passport');
-
+const routerHopdong = require('./router/hopdong.router')
 
 require('./passport/passport').default
 require('dotenv').config()
@@ -30,5 +30,7 @@ app.use(passport.session());
 
 mongoose.connect(process.env.DATABASE_URL);
 app.use('/', router)
+app.use('/hopdong/', routerHopdong)
+
 
 module.exports = app;
