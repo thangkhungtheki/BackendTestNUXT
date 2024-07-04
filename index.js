@@ -12,6 +12,13 @@ const io = new Server(4500,{
     credentials: true
   }
 });
+// Middleware để lấy giá trị header
+io.use((socket, next) => {
+  const headers = socket.handshake.headers;
+  const myCustomHeader = headers['my-custom-header'];
+  //console.log('My-Custom-Header:', myCustomHeader);
+  next();
+})
 
 io.on('connection', (socket) => {
   socket.emit('User connected', socket.id)
@@ -23,7 +30,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('chat',(data)=>{
-    console.log('Client id: %s : %s', socket.id, data)
+    console.log('Client id: %s || %s', socket.id, data)
   })
 
   
