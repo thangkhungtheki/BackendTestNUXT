@@ -4,6 +4,7 @@ var xulyhopdong = require('../CRUD/db.hopdong')
 var moment = require('moment')
 const exceljs = require('exceljs');
 
+const jwtauth = require("./jwtAuthentica")
 //const sendmailhopdong = require('../sendmail/sendmailhopdong')
 
 
