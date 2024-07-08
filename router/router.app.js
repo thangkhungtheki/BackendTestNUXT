@@ -7,7 +7,7 @@ const secret = "taolathangkhungtheki"
 const jwtauth = require("./jwtAuthentica")
 
 const xulyaxios = require('../xulyaxios')
-
+const xulydb = require('../CRUD/xulydb')
 
 
 router.get('/', (req, res)=> {
@@ -97,5 +97,13 @@ router.get('/f', async (req, res) =>{
     let rurl = await xulyaxios.getLinklh3(_link)
     res.redirect(rurl)
 })
+
+router.post('/update-password',jwtauth.authenticateToken,  async function (req, res, next) {
+  const { username, newPassword } = req.body;
+//   console.log(username)
+//   console.log(newPassword)
+  const result =  await xulydb.timuservaupdate(username,newPassword)
+  res.json(result)
+});
 
 module.exports = router
