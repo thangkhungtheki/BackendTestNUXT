@@ -3,11 +3,17 @@ var router =  express.Router()
 var xulyhopdong = require('../CRUD/db.hopdong')
 var moment = require('moment')
 const exceljs = require('exceljs');
+const days = require('../daymonthyear/day')
 
 const jwtauth = require("./jwtAuthentica")
 //const sendmailhopdong = require('../sendmail/sendmailhopdong')
 
-
+router.get('/lichthang', async (req, res)=> {
+    let thang = req.query.thang - 1
+    let nam = req.query.nam 
+    let result = await days.getWeeksStartAndEndInMonth(thang, nam , 'monday')
+    res.send(result)
+})
 router.get('/cronjobsendmailhopdong',async(req, res) => {
     // let daynow = moment().format('DD-MM-YYYY');
     var data =  await xulyhopdong.doc_hopdong()
