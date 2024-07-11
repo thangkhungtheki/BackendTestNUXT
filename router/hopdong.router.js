@@ -11,7 +11,7 @@ const jwtauth = require("./jwtAuthentica")
 router.get('/lichthang', async (req, res)=> {
     let thang = req.query.thang - 1
     let nam = req.query.nam 
-    let result = await days.getWeeksStartAndEndInMonth(thang, nam , 'monday')
+    let result = await days.getWeeksStartAndEndInMonth(thang, nam, 'monday' )
     res.send(result)
 })
 router.get('/cronjobsendmailhopdong',async(req, res) => {

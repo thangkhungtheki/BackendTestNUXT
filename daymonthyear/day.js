@@ -5,12 +5,13 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
     //     "July", "August", "September", "October", "November", "December"
     //     ],
     //     d = new Date();
-    // console.log("The current month is " + monthNames(d.getMonth));
+    //     console.log("The current month is " + monthNames[d.getMonth()]);
     let weeks = [],
         firstDate = new Date(year, month , 1),
         lastDate = new Date(year, month + 1 , 0),
         numDays = lastDate.getDate();
-    
+    var c = Date()
+
     let start = 1;
     let end = 7 - firstDate.getDay();
     if (_start == 'monday') {
@@ -75,7 +76,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             weeks.push(
                                 {
                                     thu: 'CN',
-                                    ngay: start
+                                    ngay: businessWeekEnd
                                 })
                             break;
                             case 1:
@@ -409,11 +410,32 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                     }
                     
                 }
-                // weeks.push({start: start, end: businessWeekEnd});
+                // weeks.push({
+                //     thu: 'CN', 
+                //     end: businessWeekEnd
+                // });
             }
             else{
                 //Check for last day else end date is within 5 days of the week.
                 // weeks.push({start: start, end: end});
+                
+                if(start== 1){
+                    console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
+                
+                    weeks.push({
+                        thu: 'CN', 
+                        ngay: businessWeekEnd
+                    });
+                }
+                else{
+                    console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
+                
+                    weeks.push({
+                        thu: 'T2', 
+                        ngay: end
+                    });
+                }
+                
             }
         }
         start = end + 1;
