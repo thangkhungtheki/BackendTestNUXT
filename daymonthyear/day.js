@@ -1,4 +1,4 @@
-
+const lunar = require('../daymonthyear/lunar')
 
 async function  getWeeksStartAndEndInMonth(month, year, _start) {
     // let monthNames = ["January", "February", "March", "April", "May", "June",
@@ -6,6 +6,9 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
     //     ],
     //     d = new Date();
     //     console.log("The current month is " + monthNames[d.getMonth()]);
+    const xmonth = month
+    const xyear = year
+    // console.log(xyear)
     let weeks = [],
         firstDate = new Date(year, month , 1),
         lastDate = new Date(year, month + 1 , 0),
@@ -63,16 +66,6 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                         let step = businessWeekEnd - start
                         switch(step) {
                             case 0:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     // 3: 0,
-                            //     // 4: 0,
-                            //     // 5: 0,
-                            //     // 6: 0,
-                            //     // 7: 0,
-                            //     cn: start,
-                            //     })
                             weeks.push(
                                 {
                                     thu: 'CN',
@@ -80,16 +73,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                                 })
                             break;
                             case 1:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     // 3: 0,
-                            //     // 4: 0,
-                            //     // 5: 0,
-                            //     // 6: 0,
-                            //     7: start,
-                            //     cn: businessWeekEnd,
-                            //     })
+
                             weeks.push(
                             {
                                 thu: 'T7',
@@ -101,16 +85,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             })
                             break;
                             case 2:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     // 3: 0,
-                            //     // 4: 0,
-                            //     // 5: 0,
-                            //     6: start,
-                            //     7: start + 1,
-                            //     cn: businessWeekEnd ,
-                            // })
+
                             weeks.push(
                                 {
                                     thu: 'T6',
@@ -127,16 +102,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             )
                                 break;
                             case 3:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     // 3: 0,
-                            //     // 4: 0,
-                            //     5: start,
-                            //     6: start + 1,
-                            //     7: start + 2 ,
-                            //     cn: businessWeekEnd
-                            //     })
+
                             weeks.push(
                                 {
                                     thu: 'T5',
@@ -157,16 +123,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             )
                             break;
                             case 4:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     // 3: 0,
-                            //     4: start,
-                            //     5: start + 1,
-                            //     6: start + 2 ,
-                            //     7: start + 3,
-                            //     cn: businessWeekEnd
-                            //     })
+
                             weeks.push(
                                 {
                                     thu: 'T4',
@@ -191,16 +148,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             )
                             break;
                             case 5:
-                            // code block
-                            // weeks.push({
-                            //     // 2: 0,
-                            //     3: start,
-                            //     4: start + 1,
-                            //     5: start + 2 ,
-                            //     6: start + 3,
-                            //     7: start + 4,
-                            //     cn: businessWeekEnd
-                            //     })
+
                             weeks.push(
                                 {
                                     thu: "T3",
@@ -237,15 +185,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                         let step = businessWeekEnd - start
                         switch(step) {
                             case 0:
-                            // code block
-                            // weeks.push({
-                            //     2: start,
-                            //     // 3: 0,
-                            //     // 4: 0,
-                            //     // 5: 0,
-                            //     // 6: 0,
-                            //     // 7: 0
-                            //     })
+
                             weeks.push(
                                 {
                                     thu: "T2",
@@ -254,15 +194,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             )
                             break;
                             case 1:
-                            // code block
-                            // weeks.push({
-                            //     2: start,
-                            //     3: businessWeekEnd,
-                            //     // 4: 0,
-                            //     // 5: 0,
-                            //     // 6: 0,
-                            //     // 7: 0
-                            //     })
+
                             weeks.push(
                                 {
                                     thu: "T2",
@@ -275,15 +207,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                             )
                             break;
                             case 2:
-                            // code block
-                            // weeks.push({
-                            //     2: start,
-                            //     3: start + 1,
-                            //     4: businessWeekEnd ,
-                            //     // 5: 0,
-                            //     // 6: 0,
-                            //     // 7: 0
-                            // })
+
                             weeks.push(
                             {
                                 thu: "T2",
@@ -420,7 +344,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                 // weeks.push({start: start, end: end});
                 
                 if(start== 1){
-                    console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
+                    // console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
                 
                     weeks.push({
                         thu: 'CN', 
@@ -428,7 +352,7 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
                     });
                 }
                 else{
-                    console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
+                    // console.log('start: %d - end: %d - businessWeekEnd: %d', start, end, businessWeekEnd)
                 
                     weeks.push({
                         thu: 'T2', 
@@ -446,7 +370,16 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
         }
     }
 
-    return weeks;
+    // return weeks;
+    weeks.forEach(async(item,index) => {
+        let ngayam = await lunar.tinhngayam(item.ngay, xmonth, xyear)
+        item.am = ngayam.day
+        item.amthang = ngayam.month
+        // console.log(item.ngay)
+        // console.log(xmonth)
+        // console.log(xyear)
+    })
+    return weeks
 }
 
 // console.log(getWeeksStartAndEndInMonth(7-1,2024, "monday"))
