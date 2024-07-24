@@ -375,6 +375,26 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
         let ngayam = await lunar.tinhngayam(item.ngay, xmonth, xyear)
         item.am = ngayam.day
         item.amthang = ngayam.month
+        if(index == 15){
+            item.soban = index + 20
+            item.loaitiec = 'out'
+            item.sanh = 'out'
+            item.buoi = 'sang'
+        }else if(index == 5){
+            item.soban = index + 40
+            item.loaitiec = 'cuoi'
+            item.sanh = 'pla'
+            item.buoi = 'chieu'
+        }else if(index == 10){
+            item.soban = index + 30
+            item.loaitiec = 'cuoi'
+            item.sanh = 'dp1'
+            item.buoi = 'sang'
+        }else{
+
+        }
+        
+        
         // console.log(item.ngay)
         // console.log(xmonth)
         // console.log(xyear)
