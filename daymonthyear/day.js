@@ -376,33 +376,158 @@ async function  getWeeksStartAndEndInMonth(month, year, _start) {
         item.am = ngayam.day
         item.amthang = ngayam.month
         if(index == 15){
-            item.soban = index + 20
-            item.loaitiec = 'out'
-            item.sanh = 'out'
-            item.buoi = 'sang'
+            item.thongtin = {
+                sang: {
+                    dp1: {
+                        soban : index + 70,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp1',
+                        buoi : 'sang'
+                    },
+                    dp2: {
+                        soban : index + 18,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp2',
+                        buoi : 'sang'
+                    },
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                chieu: {
+                    dp1: {},
+                    dp2: {},
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                out: {
+                    soban : index + 18,
+                    loaitiec : 'out',
+                    sanh : 'out',
+                    buoi : 'sang'
+                }
+            }
         }else if(index == 5){
-            item.soban = index + 40
-            item.loaitiec = 'cuoi'
-            item.sanh = 'pla'
-            item.buoi = 'chieu'
+            item.thongtin = {
+                sang: {
+                    dp1: {
+                        soban : index + 70,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp1',
+                        buoi : 'sang'
+                    },
+                    dp2: {
+                        soban : index + 18,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp2',
+                        buoi : 'sang'
+                    },
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                chieu: {
+                    dp1: {},
+                    dp2: {},
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                out: {
+                    soban : index + 18,
+                    loaitiec : 'out',
+                    sanh : 'out',
+                    buoi : 'sang'
+                }
+            }
         }else if(index == 10){
-            item.soban = index + 30
-            item.loaitiec = 'cuoi'
-            item.sanh = 'dp1'
-            item.buoi = 'sang'
-        }else{
+            item.thongtin = {
+                sang: {
+                    dp1: {
+                        soban : index + 70,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp1',
+                        buoi : 'sang'
+                    },
+                    dp2: {
+                        soban : index + 18,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp2',
+                        buoi : 'sang'
+                    },
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                chieu: {
+                    dp1: {},
+                    dp2: {},
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                out: {
+                    soban : index + 18,
+                    loaitiec : 'out',
+                    sanh : 'out',
+                    buoi : 'sang'
+                }
+            }
+        }else if(index == 11){
+            item.thongtin = {
+                sang: {
+                    dp1: {
+                        soban : index + 70,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp1',
+                        buoi : 'sang'
+                    },
+                    dp2: {
+                        soban : index + 18,
+                        loaitiec : 'cuoi',
+                        sanh : 'dp2',
+                        buoi : 'sang'
+                    },
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                chieu: {
+                    dp1: {},
+                    dp2: {},
+                    rb1: {},
+                    rb2: {},
+                    sp: {},
+                    pla:{}
+                },
+                out: {
+                    soban : index + 18,
+                    loaitiec : 'out',
+                    sanh : 'out',
+                    buoi : 'sang'
+                }
+            }
+                
 
+            
+            // item.soban = index + 70
+            // item.loaitiec = 'cuoi'
+            // item.sanh = 'dp1'
+            // item.buoi = 'sang'
+
+        }else{
         }
-        
-        
-        // console.log(item.ngay)
-        // console.log(xmonth)
-        // console.log(xyear)
     })
     return weeks
 }
-
-// console.log(getWeeksStartAndEndInMonth(7-1,2024, "monday"))
 
 module.exports = {
     getWeeksStartAndEndInMonth,
