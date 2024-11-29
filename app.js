@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const passport = require('./passport/passport');
 const routerHopdong = require('./router/hopdong.router')
 
+const bizflyrouter = require('./router/bizfly.router')
+
 require('./passport/passport').default
 require('dotenv').config()
 const app = express();
@@ -31,6 +33,7 @@ app.use(passport.session());
 mongoose.connect(process.env.DATABASE_URL);
 app.use('/', router)
 app.use('/hopdong/', routerHopdong)
+app.use('/apis/', bizflyrouter)
 
 
 module.exports = app;
