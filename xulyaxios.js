@@ -6,8 +6,8 @@ const fs = require('fs');
 
 const headers = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0', // Thay bằng User Agent của bạn
-  'origin': 'https://animevietsub.art',
-  'referer': 'https://animevietsub.art/',
+  'origin': 'https://animevietsub.bio/',
+  'referer': 'https://animevietsub.bio//',
   // 'Content-Type': 'application/x-www-form-urlencoded'
   // 'Cookie' : 'token619d1aa49fd625f592fdc70c0e132566=7a33cf57d662c94c3ad9169c6394fd6d; PHPSESSID=q8rs1okbpc4rg0jo19dqvin37c'
   // 'Accept': '*/*',
@@ -18,8 +18,8 @@ const headers = {
 
 const headerspost = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0', // Thay bằng User Agent của bạn
-  'origin': 'https://animevietsub.art',
-  'referer': 'https://animevietsub.art/',
+  'origin': 'https://animevietsub.bio/',
+  'referer': 'https://animevietsub.bio//',
   'Content-Type': 'application/x-www-form-urlencoded'
   // 'Cookie' : 'token619d1aa49fd625f592fdc70c0e132566=7a33cf57d662c94c3ad9169c6394fd6d; PHPSESSID=q8rs1okbpc4rg0jo19dqvin37c'
   // 'Accept': '*/*',
@@ -47,7 +47,7 @@ function getLinklh3(uri) {
 }
 
 function xuly_file_m3u8(sotap, idfilm){
-  let linkport1 = "https://animevietsub.art/ajax/player"
+  let linkport1 = "https://animevietsub.bio//ajax/player"
   const postData = {
     episodeId: sotap,
     backup: '1',
@@ -75,7 +75,7 @@ function xuly_file_m3u8(sotap, idfilm){
 }
 
 function xuly_file_m3u82(link, id){
-  let linkport1 = "https://animevietsub.art/ajax/player"
+  let linkport1 = "https://animevietsub.bio//ajax/player"
   const postData = {
     link: link,
     id: id,
