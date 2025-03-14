@@ -29,7 +29,7 @@ router.get('/bizfly/laydata', async (req, res) => {
         table: "data_price_quote",
         select: [],
         output: "default",
-        limit: 50,
+        limit: 500,
         skip: 1
 
     }
