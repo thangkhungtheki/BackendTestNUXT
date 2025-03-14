@@ -26,7 +26,7 @@ router.get('/bizfly/laydata', async (req, res) => {
 
     let uri = "https://api.bizfly.vn/crm/_api/base-table/find"
     var data = {
-        table: "data_deal",
+        table: "data_price_quote",
         select: [],
         output: "default",
         limit: 50,
