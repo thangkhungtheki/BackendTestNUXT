@@ -33,7 +33,7 @@ async function run() {
     ],
   });
 
-  const result = await chatSession.sendMessage("Chào google AI");
+  const result = await chatSession.sendMessage("Anh muốn hỏi về lịch sử hình thành sài gòn, việt nam ?");
   // TODO: Following code needs to be updated for client-side apps.
   const candidates = result.response.candidates;
   for(let candidate_index = 0; candidate_index < candidates.length; candidate_index++) {
