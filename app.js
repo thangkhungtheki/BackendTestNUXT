@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const passport = require('./passport/passport');
 const routerHopdong = require('./router/hopdong.router')
 
+const GenAIGoogle = require('./router/gemini.router')
+
 const bizflyrouter = require('./router/bizfly.router')
 
 require('./passport/passport').default
@@ -34,6 +36,6 @@ mongoose.connect(process.env.DATABASE_URL);
 app.use('/', router)
 app.use('/hopdong/', routerHopdong)
 app.use('/apis/', bizflyrouter)
+app.use('/app/' , GenAIGoogle )
 
-
-module.exports = app;
+module.exports = app
