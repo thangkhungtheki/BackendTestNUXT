@@ -61,4 +61,34 @@ router.get('/api/ai', async (req, res)=> {
     res.send(result)
 })
 
+async function runpromt(jsonData) { // Nhận dữ liệu JSON làm tham số
+  try {
+    const prompt = `Phân tích dữ liệu JSON sau: ${JSON.stringify(jsonData)}. Hãy đưa ra nhận xét, các chỉ số thống kê, và tóm tắt thông tin quan trọng.`; // Tạo prompt với dữ liệu JSON
+
+    const result = await model.generateContent({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig,
+    });
+    const response = result.response;
+    const text = response.text();
+
+    console.log(text);
+    return text;
+  } catch (error) {
+    console.error("Lỗi khi gọi API Gemini:", error);
+    return "Lỗi khi xử lý yêu cầu.";
+  }
+}
+
+router.post("/api/analyze", async (req, res) => { // Sử dụng POST thay vì GET
+  const jsonData = req.body; // Lấy dữ liệu JSON từ request body
+
+  if (!jsonData) {
+    return res.status(400).send("Không có dữ liệu JSON được cung cấp.");
+  }
+
+  const result = await runpromt(jsonData);
+  res.send(result);
+})
+
 module.exports = router
