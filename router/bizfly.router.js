@@ -29,7 +29,7 @@ router.get('/bizfly/laydata', async (req, res) => {
         table: "data_price_quote",
         select: [],
         output: "default",
-        limit: 500,
+        limit: 100,
         skip: 1
 
     }
@@ -45,7 +45,7 @@ router.get('/bizfly/laydata', async (req, res) => {
     
     // let len = resdata.l()
     // console.log(len)
-    res.send(resdata.data)
+    res.send(resdata.data.data)
 })
 
 module.exports = router

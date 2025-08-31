@@ -8,9 +8,10 @@ const {
 } = require("@google/generative-ai");
 const fs = require("node:fs");
 const mime = require("mime-types");
+const { default: axios } = require("axios");
 
 // const apiKey = process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI("AIzaSyCBcT3RLs452fnEAy6EAtf0nRCKZI4F8sY");
+const genAI = new GoogleGenerativeAI("AIzaSyCU12yA_xs2WllbOG1FMLGyfrQwgA45SuQ");
 
 const model = genAI.getGenerativeModel({
   model: "gemini-2.0-flash",
@@ -63,7 +64,9 @@ router.get('/api/ai', async (req, res)=> {
 
 async function runpromt(jsonData) { // Nhận dữ liệu JSON làm tham số
   try {
-    const prompt = `Phân tích dữ liệu JSON sau: ${JSON.stringify(jsonData)}. Hãy đưa ra nhận xét, các chỉ số thống kê, và tóm tắt thông tin quan trọng.`; // Tạo prompt với dữ liệu JSON
+    const prompt = `Phân tích dữ liệu JSON sau:
+${JSON.stringify(jsonData.data)}
+Hãy đưa ra nhận xét, các chỉ số thống kê, và tóm tắt thông tin quan trọng.`;
 
     const result = await model.generateContent({
       contents: [{ parts: [{ text: prompt }] }],
@@ -80,8 +83,11 @@ async function runpromt(jsonData) { // Nhận dữ liệu JSON làm tham số
   }
 }
 
-router.post("/api/analyze", async (req, res) => { // Sử dụng POST thay vì GET
-  const jsonData = req.body; // Lấy dữ liệu JSON từ request body
+router.get("/api/analyze", async (req, res) => { // Sử dụng POST thay vì GET
+
+  // const jsonData = req.body; // Lấy dữ liệu JSON từ request body
+  const uri = "http://127.0.0.1:4000/apis/bizfly/laydata"
+  const jsonData = await axios.get(uri)
 
   if (!jsonData) {
     return res.status(400).send("Không có dữ liệu JSON được cung cấp.");
