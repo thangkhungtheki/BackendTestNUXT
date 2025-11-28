@@ -6,7 +6,7 @@ const { Server } = require('socket.io');
 const server = http.createServer(app);
 const io = new Server(4500,{
   cors: {
-    origin: ["http://192.168.2.134:3000","http://127.0.0.1:3000"],
+    origin: ["http://172.16.1.84:3000","http://127.0.0.1:3000"],
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
